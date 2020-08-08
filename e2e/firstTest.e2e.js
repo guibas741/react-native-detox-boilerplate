@@ -5,16 +5,22 @@ describe('Example', () => {
   });
 
   it('should have welcome screen', async () => {
-    await expect(element(by.id('welcome'))).toBeVisible();
+    const emailInput = element(by.id('email-input'));
+    const button = element(by.label('ENTRAR'));
+
+    await emailInput.typeText('exemplo@aurum.com.br');
+    await button.tap();
+
+    await expect(element(by.text('Senha obrigatória'))).toBeVisible();
   });
 
-  it('should show hello screen after tap', async () => {
-    await element(by.id('hello_button')).tap();
-    await expect(element(by.text('Hello!!!'))).toBeVisible();
-  });
+  it('should render message when email is empty', async () => {
+    const emailInput = element(by.id('password-input'));
+    const button = element(by.label('ENTRAR'));
 
-  it('should show world screen after tap', async () => {
-    await element(by.id('world_button')).tap();
-    await expect(element(by.text('World!!!'))).toBeVisible();
+    await emailInput.typeText('123');
+    await button.tap();
+
+    await expect(element(by.text('Email obrigatório'))).toBeVisible();
   });
 });
