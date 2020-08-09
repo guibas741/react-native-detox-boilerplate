@@ -38,34 +38,33 @@ const App = () => {
   return (
     <>
       <StatusBar barStyle="dark-content" />
-      <SafeAreaView
-        style={{
-          flex: 1,
-          justifyContent: 'center',
-          backgroundColor: 'black',
-        }}>
-        <View style={{borderRadius: 20, padding: 10, backgroundColor: 'white'}}>
+      <SafeAreaView style={styles.containerStyle}>
+        <View style={styles.formContainerStyle}>
           <Text>Email</Text>
-          <TextInput
-            testID="email-input"
-            value={email}
-            onChangeText={setEmail}
-          />
+          <View style={styles.inputStyle}>
+            <TextInput
+              testID="email-input"
+              value={email}
+              onChangeText={setEmail}
+            />
+          </View>
 
           <Text>Senha</Text>
-          <TextInput
-            secureTextEntry
-            testID="password-input"
-            value={password}
-            onChangeText={setPassword}
-          />
+          <View style={styles.inputStyle}>
+            <TextInput
+              secureTextEntry
+              testID="password-input"
+              value={password}
+              onChangeText={setPassword}
+            />
+          </View>
 
           {!!error && <Text style={styles.errorStyle}>{error}</Text>}
 
           <TouchableOpacity
             style={styles.buttonStyle}
             onPress={handleValidation}>
-            <Text style={{color: 'white'}}>ENTRAR</Text>
+            <Text style={styles.buttonTextStyle}>ENTRAR</Text>
           </TouchableOpacity>
         </View>
       </SafeAreaView>
@@ -74,12 +73,35 @@ const App = () => {
 };
 
 const styles = StyleSheet.create({
+  containerStyle: {
+    flex: 1,
+    justifyContent: 'center',
+    backgroundColor: 'black',
+  },
+  formContainerStyle: {
+    borderRadius: 10,
+    padding: 20,
+    backgroundColor: 'white',
+    margin: 20,
+  },
+  inputStyle: {
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: 'black',
+    padding: 10,
+  },
   errorStyle: {
     color: 'red',
   },
   buttonStyle: {
+    marginTop: 10,
     borderRadius: 5,
     backgroundColor: 'green',
+    padding: 10,
+    alignItems: 'center',
+  },
+  buttonTextStyle: {
+    color: 'white',
   },
 });
 
