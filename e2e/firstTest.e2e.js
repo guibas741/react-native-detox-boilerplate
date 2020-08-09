@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-describe('Example', () => {
+describe('Login test suit', () => {
   beforeEach(async () => {
     await device.reloadReactNative();
   });
